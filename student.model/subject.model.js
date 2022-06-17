@@ -3,6 +3,9 @@ const Schema = mongoose.Schema
 
 const subjectSchema = new Schema({
     subject:String
+
+
 })
 
-module.exports = mongoose.model('Subject',subjectSchema)
+const Subject = new mongoose.model('Subject',subjectSchema)
+module.exports = Subject

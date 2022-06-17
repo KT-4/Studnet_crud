@@ -2,10 +2,13 @@ const mongoose =require('mongoose')
 const Schema = mongoose.Schema
 
 const marksSchema = new Schema({
-    marks:Number
+    marks:{
+        type:Number,
+        required:true
+    },
 })
 
 
-const Marks = mongoose.model('Marks',marksSchema)
+const Marks = new mongoose.model('Marks',marksSchema)
 
 module.exports = Marks

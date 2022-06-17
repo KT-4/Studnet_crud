@@ -1,8 +1,11 @@
-
+// const Subject = require('../student.model/subject.model')
 const Student = require('../student.model/student.models')
 
-createNewStudent = async (req,res) =>{
+const createNewStudent = async (req,res) =>{
     try{
+
+        
+
         const student = new Student({
             name: req.body.name,
             roll: req.body.roll,
@@ -13,22 +16,59 @@ createNewStudent = async (req,res) =>{
         res.status(200).send(student)
     }
     catch(err){
-        res.status(500).send()
+        res.status(500).send(err)
     }
 }
 
 
-  getStudent = async(req,res) =>{
+ const getStudent = async(req,res, next) =>{
      try{
-         const student = await Student.find().populate('Subject').populate('Marks')
+         const student = await Student.find({}).populate("subject").populate("marks")
+         
+
          res.status(200).send(student)
-         res.status(200).send(student)
+        
      }catch(err){
-        res.status(500).send()
+        res.status(500).send(err)
      }
   }
 
-  
+  const getIDStudent = async(req, res, next) =>{
+      const _id= req.params.id
+    try{
+        const student = await Student.findById(_id).populate("subject").populate("marks")
+        
+
+        res.status(200).send(student)
+       
+    }catch(err){
+       res.status(500).send(err)
+    }
+ }
 
 
-  module.exports = {createNewStudent,getStudent}
+ const UpdateStudent = async(req, res, next) =>{
+    const _id= req.params.id
+  try{
+      const student = await Student.findByIdAndUpdate({_id},req.body,{new:true})
+      res.status(200).send(student)  
+  }catch(err){
+     res.status(500).send()
+  }
+}
+
+
+const deleteStudent = async(req, res, next) =>{
+    const _id= req.params.id
+  try{
+      const student = await Student.findByIdAndDelete({_id})
+
+      res.status(200).send(student)
+     
+  }catch(err){
+     res.status(500).send(err)
+  }
+}
+
+
+  module.exports = {createNewStudent,getStudent,getIDStudent,UpdateStudent,deleteStudent}
