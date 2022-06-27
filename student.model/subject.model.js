@@ -6,13 +6,17 @@ const subjectSchema = new Schema({
         type:String,
         required:true,
         unique:true
-    },
-    // marks:{
-    //         type:mongoose.Schema.Types.ObjectId,
-    //         ref:'Marks',
-    //         required:true
-    //     },
+    }
+   
     
+
+        // name:{type:String,required:true},
+        // roll:{type:String,required:true},
+        // subject:[{
+        //     type:mongoose.Schema.Types.ObjectId,
+        //     ref:'Subject',
+        //     required:true      
+        // }]
 
 })
 
