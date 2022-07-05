@@ -7,7 +7,7 @@ const port = process.env.PORT || 3000
 const sutdentRoute = require('./routes/student.routes')
 const marksRoute = require('./routes/marks.routes')
 const subjectRoute = require('./routes/subject.routes')
-
+const countryRoute = require('./routes/country.routes')
 //listen router in app
 
 app.use(
@@ -19,6 +19,6 @@ app.use(express.json());
 app.use('/',sutdentRoute)
 app.use('/',marksRoute)
 app.use('/',subjectRoute)
-
+app.use('/',countryRoute)
 
 app.listen(port,()=> console.log(`server is running ${port}`))

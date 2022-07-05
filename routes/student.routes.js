@@ -9,4 +9,9 @@ router.get('/student/:id',getIDStudent)
 router.get('/student/:id/:id',getIdSubject)
 router.patch('/student/:id',UpdateStudent)
 router.delete('/student/:id',deleteStudent)
+
+//countries get
+
+
+
 module.exports = router
