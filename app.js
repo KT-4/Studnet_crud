@@ -8,6 +8,8 @@ const sutdentRoute = require('./routes/student.routes')
 const marksRoute = require('./routes/marks.routes')
 const subjectRoute = require('./routes/subject.routes')
 const countryRoute = require('./routes/country.routes')
+const stateRoute = require('./routes/state.routes')
+const cityRoute = require('./routes/city.routes')
 //listen router in app
 
 app.use(
@@ -20,5 +22,7 @@ app.use('/',sutdentRoute)
 app.use('/',marksRoute)
 app.use('/',subjectRoute)
 app.use('/',countryRoute)
+app.use('/',stateRoute)
+app.use('/',cityRoute)
 
 app.listen(port,()=> console.log(`server is running ${port}`))

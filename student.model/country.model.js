@@ -4,18 +4,75 @@
 
 const countrySchema = new Schema({
  
-    country:{
-        type:String,
-        required:true
+    _id:{
+        type:Number,
+        
     },
-    state:{
-        type:String,
-        required:true
+    id:{
+        type:Number
     },
-    city:{
+    name:{
         type:String,
-        required:true
-    }
+        
+    },
+    country_id:{
+        type:Number,
+        
+    },
+    iso3:{
+        type:String,
+    },
+    iso2:{
+         type:String,
+    
+    },
+    numeric_code:{
+        type:Number,
+    },
+    phone_code:{
+        type:String,
+        
+    },
+    capital:{
+        type:String
+    },
+    currency:{
+        type:String
+    },
+    currency_name:{
+        type:String
+    },
+    currency_symbol:{
+        type:String
+    },
+    tld:{
+        type:String
+    },
+    native:{
+        type:String
+    },
+    region:{
+        type:String
+    },
+    subregion:{
+        type:String
+    },
+    timezones:{
+        type:String
+    },
+    latitude:{
+        type:String
+    },
+    longitude:{
+        type:String
+    },
+    emoji:{
+        type:String
+    },
+    emojiU:{
+        type:String
+    },
+  
 })
 
 
