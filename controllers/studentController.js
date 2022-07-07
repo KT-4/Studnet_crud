@@ -34,7 +34,7 @@ const createNewStudent = async (req,res) =>{
  const getStudent = async(req,res, next) =>{
      try{
          const student = await Student.find({})
-         .populate('subject').populate('marks')
+         .populate('subject').populate('marks').populate('country')
          
 
          res.status(200).send(student)
@@ -47,7 +47,7 @@ const createNewStudent = async (req,res) =>{
   const getIDStudent = async(req, res, next) =>{
       const _id= req.params.id
     try{
-        const student = await Student.findById(_id).populate('subject').populate('marks')         
+        const student = await Student.findById(_id).populate('subject').populate('marks')  
         
         res.status(200).send(student)
        
