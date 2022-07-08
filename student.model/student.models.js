@@ -2,14 +2,12 @@ const mongoose = require('mongoose')
 
 
 const studentSchema =  new mongoose.Schema({
-    name:{type:String,required:true},
-    roll:{type:String,required:true},
-    mobile:{type:Number,
-        required:true,
-        unique:true,
-        minlength:10,
-        maxlength:10
-    },
+    name:{
+        type:String,
+        required:true},
+    roll:{
+        type:String,
+        required:true},
     subject:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Subject',

@@ -14,10 +14,14 @@ const createNewStudent = async (req,res) =>{
         if(!subjectIds){
             res.status(502).send({message:"Invilde Subjects"})
         }
+
         const student = new Student(
           {
-             name: req.body.name,     
+              name: req.body.name,     
               roll: req.body.roll,
+              country:req.body.country,
+              state:req.body.state,
+              city:req.body.city,
               subject:subjectIds,
               marks: markIds
               
@@ -34,7 +38,7 @@ const createNewStudent = async (req,res) =>{
  const getStudent = async(req,res, next) =>{
      try{
          const student = await Student.find({})
-         .populate('subject').populate('marks').populate('country')
+         .populate('subject').populate('marks')
          
 
          res.status(200).send(student)
@@ -76,6 +80,9 @@ const createNewStudent = async (req,res) =>{
       const student = await Student.findByIdAndUpdate(req.params.id,{
         name:req.body.name,
         roll:req.body.roll,
+        country:req.body.country,
+        state:req.body.state,
+        city:req.body.city,
         subject:updatesub,
         marks:updateMark
       },{new:true})

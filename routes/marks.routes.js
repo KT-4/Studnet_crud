@@ -5,8 +5,7 @@ const {createNewMarks,getMark,updateMark,deleteMark} = require('../controllers/m
 
 router.post('/marks',createNewMarks)
 router.get('/marks',getMark)
-router.patch('/marks/:id',updateMark)
-router.delete('/marks/:id',deleteMark)
+
 
 
 module.exports = router
