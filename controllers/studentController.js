@@ -1,12 +1,16 @@
 const Subject = require('../student.model/subject.model')
 const Student = require('../student.model/student.models')
 const Marks = require('../student.model/marks.model.js')
+const Country = require('../student.model/country.model')
 
 const createNewStudent = async (req,res) =>{
     try{
         
         const subject = await Subject.find({'subject': {$in:req.body.subject}})
         const subjectIds = subject.map(e=>e._id)
+
+        // const country = await Country.find({'country': {$in:req.body.country}})
+        // const countryId = country.map(c=>c._id)
 
         const mark = await Marks.find({'mark':{$in:req.body.marks}})
        const markIds = mark.map(e=>e._id)
@@ -76,13 +80,15 @@ const createNewStudent = async (req,res) =>{
   try{
     const updatesub = await Subject.find({"subject":{$in:req.body.subject}})
     const updateMark = await Marks.find({"mark":{$in:req.body.marks}})
-    
+    // const updateCountry = await Country.find({"country":{$in:req.body.Country}})
+
       const student = await Student.findByIdAndUpdate(req.params.id,{
         name:req.body.name,
         roll:req.body.roll,
         country:req.body.country,
         state:req.body.state,
         city:req.body.city,
+        file:req.body.file,
         subject:updatesub,
         marks:updateMark
       },{new:true})

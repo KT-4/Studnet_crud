@@ -3,9 +3,7 @@ const Schema = mongoose.Schema
 
 
 const citySchema = new Schema({
-    _id:{
-        type:Number
-    },
+
     id:{
         type:String
     },

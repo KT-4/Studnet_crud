@@ -4,10 +4,7 @@
 
 const countrySchema = new Schema({
  
-    _id:{
-        type:Number,
-        
-    },
+ 
     id:{
         type:Number
     },
