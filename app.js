@@ -10,7 +10,7 @@ const subjectRoute = require('./routes/subject.routes')
 const countryRoute = require('./routes/country.routes')
 const stateRoute = require('./routes/state.routes')
 const cityRoute = require('./routes/city.routes')
-const uploadRoute = require('./routes/upload.routes')
+ const uploadRoute = require('./routes/upload.routes')
 //listen router in app
 
 app.use(
@@ -20,7 +20,7 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-app.use(express.static('upload'))
+app.use('/files',express.static('upload'))
 
 app.use('/',sutdentRoute)
 app.use('/',marksRoute)
@@ -28,6 +28,6 @@ app.use('/',subjectRoute)
 app.use('/',countryRoute)
 app.use('/',stateRoute)
 app.use('/',cityRoute)
-app.use('/',uploadRoute)
+ app.use('/',uploadRoute)
 
 app.listen(port,()=> console.log(`server is running ${port}`))

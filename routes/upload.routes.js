@@ -31,10 +31,33 @@ router.post('/file',(req, res)=>{
     
 })
 
+const diskStorage = multer.diskStorage({
+    destination:(req,res,cb)=>{
+        cb(null,'upload')   
+    },
+    filename:(req,file,cb)=>{
+        cb(null, Date.now() + path.extname(file.originalname))
+    }
+});
 
-const uploads = multer({storage:storage})
+const uploads = multer({storage:diskStorage})
 
-router.post('/multifiles',uploads.array("files",9000),(req,res)=>{
+
+// router.post('/multifiles',(req, res)=>{
+//     let file = req.file
+//     upload(req,res,(err)=>{
+//         if(err){
+//             console.log(err)
+//         }
+//         if(Array.isArray(file)) 
+//         console.log(req.file)
+//         let data = req.file
+//         res.json({data})
+//     })
+    
+// })
+
+router.post('/multifiles',uploads.array("files"),(req,res)=>{
     const files = req.files
     if(Array.isArray(files) && files.length > 0){
         res.json(files)

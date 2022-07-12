@@ -4,6 +4,7 @@ const Marks = require('../student.model/marks.model.js')
 const Country = require('../student.model/country.model')
 
 const createNewStudent = async (req,res) =>{
+    
     try{
         
         const subject = await Subject.find({'subject': {$in:req.body.subject}})
@@ -18,6 +19,13 @@ const createNewStudent = async (req,res) =>{
         if(!subjectIds){
             res.status(502).send({message:"Invilde Subjects"})
         }
+         
+        const multifile = req.files
+        console.log(multifile)
+        const files = multifile.map(file=>{
+          return  'http://localhost:3000/files/'+ file.filename
+        }) 
+
 
         const student = new Student(
           {
@@ -26,6 +34,7 @@ const createNewStudent = async (req,res) =>{
               country:req.body.country,
               state:req.body.state,
               city:req.body.city,
+              file:files,
               subject:subjectIds,
               marks: markIds
               
@@ -81,6 +90,12 @@ const createNewStudent = async (req,res) =>{
     const updatesub = await Subject.find({"subject":{$in:req.body.subject}})
     const updateMark = await Marks.find({"mark":{$in:req.body.marks}})
     // const updateCountry = await Country.find({"country":{$in:req.body.Country}})
+  
+    const multifile = req.files
+    console.log(multifile)
+    const updatefiles = multifile.map(file=>{
+      return 'http://localhost:3000/files/'+ file.filename
+    }) 
 
       const student = await Student.findByIdAndUpdate(req.params.id,{
         name:req.body.name,
@@ -88,7 +103,7 @@ const createNewStudent = async (req,res) =>{
         country:req.body.country,
         state:req.body.state,
         city:req.body.city,
-        file:req.body.file,
+        file:updatefiles,
         subject:updatesub,
         marks:updateMark
       },{new:true})

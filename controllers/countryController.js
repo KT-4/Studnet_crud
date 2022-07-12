@@ -4,6 +4,8 @@ const State = require ('../student.model/state.model')
 const City = require ('../student.model/city.model')
 
 const getCountry = async (req,res) =>{
+
+    
         try{
                 const countries = await Country.find({})      
                 res.status(200).send(countries)
